@@ -1,0 +1,7 @@
+add_executable(cards_card_test cards_card.cpp)
+add_executable(cards_deck_test cards_deck.cpp)
+
+target_link_libraries(cards_card_test cards)
+target_link_libraries(cards_card_test tests)
+target_link_libraries(cards_deck_test cards)
+target_link_libraries(cards_deck_test tests)

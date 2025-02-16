@@ -1,11 +1,10 @@
-#include"../include/cards.hpp"
+#include"../../include/cards.hpp"
 
 #include<list>
-#include<queue>
-#include<array>
+#include<vector>
 #include<random>
 
-template<size_t N> std::string string_lookup(const size_t index, const std::array<std::string, N> lookup_table){
+std::string string_lookup(const size_t index, const std::vector<std::string> lookup_table){
     try{
         return lookup_table.at(index);
     }catch(...){
@@ -14,20 +13,24 @@ template<size_t N> std::string string_lookup(const size_t index, const std::arra
 }
 
 std::string cards::card::suit_str(){
-    const std::array<std::string, 4> suit_lookup = {"clubs", "diamonds", "hearts", "spades"};
+    const std::vector<std::string> suit_lookup = {"clubs", "diamonds", "hearts", "spades"};
 
-    return string_lookup<4>(this->suit, suit_lookup);
+    return string_lookup(this->suit, suit_lookup);
 }
 
 std::string cards::card::value_str(){
-    const std::array<std::string, 13> value_lookup = {"two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king", "ace"};
+    const std::vector<std::string> value_lookup = {"two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king", "ace"};
 
-    return string_lookup<13>(this->value, value_lookup);
+    return string_lookup(this->value, value_lookup);
 }
 
 cards::card::card(const enum cards::suits &&suit, const enum cards::values &&value){
     this->suit = suit;
     this->value = value;
+}
+
+size_t cards::deck::deck_size(){
+    return this->cards.size();
 }
 
 void cards::deck::clear(){

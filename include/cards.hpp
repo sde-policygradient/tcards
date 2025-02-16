@@ -5,8 +5,7 @@
  */
 
 #include<list>
-#include<queue>
-#include<array>
+#include<vector>
 #include<random>
 
 namespace cards{
@@ -48,6 +47,8 @@ class deck{
         std::list<card> cards;
 
     public:
+        size_t deck_size();
+        
         void clear();
         void shuffle();
 
